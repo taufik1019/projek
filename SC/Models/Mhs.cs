@@ -14,7 +14,7 @@ namespace SC.Models
         public int Npm { get; set; }
         public string Name { get; set; }
         public string Jurusan { get; set; }
-        public int Age { get; set; }
+        public DateTime TanggalLahir { get; set; }
         public string Alamat { get; set; }
         public string Image { get; set; }
         

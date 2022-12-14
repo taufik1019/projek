@@ -12,8 +12,18 @@ namespace SC.Models
         [Key]
         public int Id { get; set; }
         public DateTime Tanggal { get; set; }
+
+        public Keluhan Keluhan { get; set; }
+        [ForeignKey("Keluhan")]
+        public int KeluhanId { get; set; }
+        public string KeluhanMhs { get; set; }
         public string Respon { get; set; }
-        public int UserRoleId { get; set; }
+        public Staff Staff { get; set; }
+        [ForeignKey("Staff")]
+        public int StaffId { get; set; }
+        public string StaffName { get; set; }
+       
+
 
     }
 }

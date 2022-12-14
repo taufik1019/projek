@@ -28,15 +28,21 @@ namespace SC
         {
             services.AddScoped<AccountRepository>();
             services.AddScoped<KeluhanRepository>();
+            services.AddScoped<ResponKeluhanRepository>();
             services.AddScoped<MhsRepository>();
 
 
             services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.IdleTimeout = TimeSpan.FromSeconds(5);
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
+
+
+
+
+
 
             services.AddDbContext<MyContext>(option =>
             option.UseSqlServer(Configuration.GetConnectionString("MyConnection")));
@@ -69,7 +75,7 @@ namespace SC
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Account}/{action=Login}/{id?}");
+                    pattern: "/{controller=Account}/{action=Login}/{id?}");
             });
         }
     }

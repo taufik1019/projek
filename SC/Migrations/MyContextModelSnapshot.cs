@@ -52,9 +52,6 @@ namespace SC.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Age")
-                        .HasColumnType("int");
-
                     b.Property<string>("Alamat")
                         .HasColumnType("nvarchar(max)");
 
@@ -70,6 +67,9 @@ namespace SC.Migrations
                     b.Property<int>("Npm")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("TanggalLahir")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
                     b.ToTable("Mhs");
@@ -82,16 +82,29 @@ namespace SC.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("KeluhanId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("KeluhanMhs")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Respon")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("StaffId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("StaffName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Tanggal")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserRoleId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("KeluhanId");
+
+                    b.HasIndex("StaffId");
 
                     b.ToTable("ResponKeluhans");
                 });
@@ -180,6 +193,21 @@ namespace SC.Migrations
                     b.HasOne("SC.Models.Mhs", "Mhs")
                         .WithMany()
                         .HasForeignKey("MhsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("SC.Models.ResponKeluhan", b =>
+                {
+                    b.HasOne("SC.Models.Keluhan", "Keluhan")
+                        .WithMany()
+                        .HasForeignKey("KeluhanId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SC.Models.Staff", "Staff")
+                        .WithMany()
+                        .HasForeignKey("StaffId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

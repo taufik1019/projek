@@ -2,14 +2,15 @@
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "_LayoutAdmin";
 }
 
-<h1>Index</h1>
+<h1>Mahasiswa</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
 </p>
-<table class="table">
+<table class="table" id="MhsTable">
     <thead>
         <tr>
             <th>
@@ -25,7 +26,7 @@
                 @Html.DisplayNameFor(model => model.Jurusan)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Age)
+                @Html.DisplayNameFor(model => model.TanggalLahir)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Alamat)
@@ -52,7 +53,7 @@
                 @Html.DisplayFor(modelItem => item.Jurusan)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Age)
+                @Html.DisplayFor(modelItem => item.TanggalLahir)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Alamat)
@@ -61,8 +62,8 @@
                 @Html.DisplayFor(modelItem => item.Image)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new {  id=item.Id  }) 
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Edit", "Edit", new {  id=item.Id  }) |
+               
                 @Html.ActionLink("Remove", "Remove", new { id=item.Id })
             </td>
         </tr>

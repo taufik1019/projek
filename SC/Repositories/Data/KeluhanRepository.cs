@@ -29,12 +29,30 @@ namespace SC.Repositories.Data
            return data;
         }
 
+        //public List<Keluhan> getmhs(int idmhs)
+        //{
+        //    var data = myContext.Keluhans
+        //               .Include(x => x.Mhs)
+        //               .Where(x => x.MhsId.Equals(idmhs))
+        //               .ToList();
+
+        //    return data;
+        //}
+
         public Keluhan Get(int id)
         {
-            var data = myContext.Keluhans.Include(x => x.Mhs).Where(x => x.Id.Equals(id)).FirstOrDefault();
+            var data = myContext.Keluhans
+                       .Include(x => x.Mhs)
+                       .Where(x => x.Id.Equals(id))
+                       .FirstOrDefault();
             return data;
         }
 
+        //public int keluhanmhs(int mhsid, strin)
+        //{
+        //    myContext.Keluhans.Add(KeluhanRepository);
+        //    return 0;
+        //}
         public int Post(Keluhan keluhan)
         {
            myContext.Keluhans.Add(keluhan);

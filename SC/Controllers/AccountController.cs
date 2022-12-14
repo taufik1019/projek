@@ -33,10 +33,10 @@ namespace SC.Controllers
                 HttpContext.Session.SetString("iduser", data.Id.ToString());
                 if (data.IdRole == 1)
                 {
-                    return RedirectToAction("Index", "Keluhan");
+                    return RedirectToAction("Index", "Home");
                 } else if(data.IdRole == 2)
                 {
-                    return RedirectToAction("Index", "Mhs");
+                    return RedirectToAction("Index", "Homemhs");
                 }
                 
             }

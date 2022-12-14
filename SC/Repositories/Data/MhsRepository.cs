@@ -28,6 +28,18 @@ namespace SC.Repositories.Data
             return data;
         }
 
+        //public User getmhsid(String iduser)
+        //{
+        //    var id = int.Parse(iduser);
+        //    var data = myContext.Users
+        //               .Where(x => x.Id.Equals(id))
+        //               .FirstOrDefault();
+
+        //    return data;
+        //}
+
+        
+
         public Mhs Get(int id)
         {
             var data = myContext.Mhs.Where(x => x.Id.Equals(id)).FirstOrDefault();
